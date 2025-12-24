@@ -3,10 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-// Dummy Home component for testing - replace with your real import
-const Home = () => (
-  <div className="pt-32 text-center text-white h-screen">Home Page Loaded</div>
-);
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -15,7 +12,6 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Add more routes here as you create them */}
       </Routes>
 
       <Footer />
