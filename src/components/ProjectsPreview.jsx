@@ -38,38 +38,22 @@ const ProjectsPreview = () => {
     ];
 
     return (
-        <section className="relative py-24 overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
-                <div className="absolute top-1/4 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl"></div>
-            </div>
-
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-24 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
-                <div className="text-center mb-16">
-                    <span className="inline-block px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-sm font-medium mb-4">
-                        Featured Work
-                    </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-                        Recent{" "}
-                        <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                            Projects
-                        </span>
+                <div className="mb-16">
+                    <h2 className="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">
+                        Featured Projects
                     </h2>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        A selection of my recent work that showcases my skills and passion
-                    </p>
+                    <p className="text-gray-500">Some of my recent work</p>
                 </div>
 
                 {/* Projects Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, index) => (
+                    {projects.map((project) => (
                         <div
                             key={project.title}
-                            className="group relative rounded-2xl bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 overflow-hidden hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/10"
+                            className="group bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
                         >
                             {/* Project Image */}
                             <div className="relative h-48 overflow-hidden">
@@ -79,11 +63,11 @@ const ProjectsPreview = () => {
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                                 {/* Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-60"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                                 {/* Featured Badge */}
                                 {project.featured && (
-                                    <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-semibold">
+                                    <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold">
                                         ⭐ Featured
                                     </div>
                                 )}
@@ -94,7 +78,7 @@ const ProjectsPreview = () => {
                                         href={project.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="p-2 rounded-lg bg-slate-900/80 backdrop-blur-sm text-gray-300 hover:text-white hover:bg-slate-800 transition-colors duration-300"
+                                        className="p-2 rounded-lg bg-white/90 text-gray-700 hover:text-gray-900 transition-colors duration-300"
                                     >
                                         <FaGithub size={18} />
                                     </a>
@@ -102,7 +86,7 @@ const ProjectsPreview = () => {
                                         href={project.live}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="p-2 rounded-lg bg-slate-900/80 backdrop-blur-sm text-gray-300 hover:text-cyan-400 hover:bg-slate-800 transition-colors duration-300"
+                                        className="p-2 rounded-lg bg-white/90 text-gray-700 hover:text-blue-600 transition-colors duration-300"
                                     >
                                         <FaExternalLinkAlt size={16} />
                                     </a>
@@ -111,10 +95,10 @@ const ProjectsPreview = () => {
 
                             {/* Project Content */}
                             <div className="p-6 space-y-4">
-                                <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300">
+                                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                                     {project.title}
                                 </h3>
-                                <p className="text-gray-400 text-sm leading-relaxed">
+                                <p className="text-gray-600 text-sm leading-relaxed">
                                     {project.description}
                                 </p>
 
@@ -123,16 +107,13 @@ const ProjectsPreview = () => {
                                     {project.tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="px-3 py-1 text-xs font-medium rounded-full bg-slate-700/50 text-gray-300 border border-slate-600/50"
+                                            className="px-3 py-1 text-xs font-medium rounded-full bg-blue-50 text-blue-600 border border-blue-100"
                                         >
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
                             </div>
-
-                            {/* Bottom gradient line */}
-                            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                         </div>
                     ))}
                 </div>
@@ -141,11 +122,10 @@ const ProjectsPreview = () => {
                 <div className="text-center mt-12">
                     <Link
                         to="/projects"
-                        className="group relative inline-flex items-center gap-2 px-8 py-4 overflow-hidden rounded-full border-2 border-purple-500/50 text-white font-semibold hover:border-purple-400 transition-all duration-300"
+                        className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-blue-600 text-blue-600 font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300"
                     >
-                        <span className="absolute inset-0 bg-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                        <span className="relative">View All Projects</span>
-                        <HiArrowRight className="relative group-hover:translate-x-1 transition-transform duration-300" />
+                        <span>View All Projects</span>
+                        <HiArrowRight />
                     </Link>
                 </div>
             </div>

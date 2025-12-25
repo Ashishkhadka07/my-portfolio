@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
-import { HiArrowRight, HiSparkles } from "react-icons/hi";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { HiArrowRight } from "react-icons/hi";
 import logo from "../assets/logo.jpg";
 
 const Hero = () => {
@@ -40,30 +40,10 @@ const Hero = () => {
     }, [displayText, isDeleting, currentRole, roles]);
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-            {/* Animated Background Elements */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gray-50">
+            {/* Subtle Background Pattern */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {/* Gradient Orbs */}
-                <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600/30 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-600/10 rounded-full blur-3xl"></div>
-
-                {/* Floating particles */}
-                {[...Array(6)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="absolute w-2 h-2 bg-purple-400/40 rounded-full animate-bounce"
-                        style={{
-                            top: `${20 + i * 15}%`,
-                            left: `${10 + i * 15}%`,
-                            animationDelay: `${i * 0.5}s`,
-                            animationDuration: `${3 + i}s`,
-                        }}
-                    ></div>
-                ))}
-
-                {/* Grid pattern overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
             </div>
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,25 +51,24 @@ const Hero = () => {
                     {/* Left Content */}
                     <div className="text-center lg:text-left space-y-8">
                         {/* Greeting Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-purple-500/30 backdrop-blur-sm">
-                            <HiSparkles className="text-yellow-400 animate-pulse" />
-                            <span className="text-gray-300 text-sm">Welcome to my portfolio</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200">
+                            <span className="text-blue-600 text-sm font-medium">👋 Welcome to my portfolio</span>
                         </div>
 
                         {/* Main Heading */}
                         <div className="space-y-4">
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                                 Hi, I'm{" "}
-                                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+                                <span className="text-blue-600">
                                     Ashish Khadka
                                 </span>
                             </h1>
 
                             {/* Typing Animation */}
                             <div className="h-12 flex items-center justify-center lg:justify-start">
-                                <span className="text-xl sm:text-2xl text-gray-400">
+                                <span className="text-xl sm:text-2xl text-gray-600">
                                     I'm a{" "}
-                                    <span className="text-cyan-400 font-semibold">
+                                    <span className="text-blue-600 font-semibold">
                                         {displayText}
                                         <span className="animate-pulse">|</span>
                                     </span>
@@ -98,7 +77,7 @@ const Hero = () => {
                         </div>
 
                         {/* Description */}
-                        <p className="text-gray-400 text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        <p className="text-gray-600 text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
                             Passionate about creating beautiful, responsive, and user-friendly web
                             experiences. I transform ideas into elegant digital solutions that make
                             a difference.
@@ -108,20 +87,18 @@ const Hero = () => {
                         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                             <Link
                                 to="/projects"
-                                className="group relative inline-flex items-center gap-2 px-8 py-4 overflow-hidden rounded-full"
+                                className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300"
                             >
-                                <span className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 transition-transform duration-300 group-hover:scale-105"></span>
-                                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
-                                <span className="relative text-white font-semibold">View My Work</span>
-                                <HiArrowRight className="relative text-white group-hover:translate-x-1 transition-transform duration-300" />
+                                <span>View My Work</span>
+                                <HiArrowRight />
                             </Link>
 
                             <Link
                                 to="/contact"
-                                className="group inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-purple-500/50 text-white font-semibold hover:bg-purple-500/10 hover:border-purple-400 transition-all duration-300"
+                                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-gray-300 text-gray-700 font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
                             >
                                 <span>Let's Talk</span>
-                                <span className="group-hover:rotate-45 transition-transform duration-300">💬</span>
+                                <span>💬</span>
                             </Link>
                         </div>
 
@@ -133,7 +110,7 @@ const Hero = () => {
                                     href="https://github.com/yourusername"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group p-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-gray-400 hover:text-white hover:border-purple-500/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300"
+                                    className="p-3 rounded-xl bg-white border border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-300 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
                                 >
                                     <FaGithub size={20} />
                                 </a>
@@ -141,7 +118,7 @@ const Hero = () => {
                                     href="https://linkedin.com/in/yourusername"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group p-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-gray-400 hover:text-cyan-400 hover:border-cyan-500/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300"
+                                    className="p-3 rounded-xl bg-white border border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-300 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
                                 >
                                     <FaLinkedin size={20} />
                                 </a>
@@ -152,16 +129,13 @@ const Hero = () => {
                     {/* Right Content - Profile Image */}
                     <div className="flex justify-center lg:justify-end">
                         <div className="relative group">
-                            {/* Glow effect */}
-                            <div className="absolute -inset-4 bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
-
                             {/* Image container */}
                             <div className="relative">
-                                {/* Rotating border */}
-                                <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 via-pink-500 to-cyan-500 rounded-full animate-spin-slow opacity-75"></div>
+                                {/* Blue ring border */}
+                                <div className="absolute -inset-2 bg-blue-600 rounded-full opacity-20"></div>
 
                                 {/* Image */}
-                                <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-slate-900">
+                                <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl">
                                     <img
                                         src={logo}
                                         alt="Ashish Khadka"
@@ -170,14 +144,14 @@ const Hero = () => {
                                 </div>
 
                                 {/* Floating badges */}
-                                <div className="absolute -right-4 top-8 px-4 py-2 bg-slate-800/90 backdrop-blur-sm rounded-lg border border-purple-500/30 shadow-lg animate-bounce">
+                                <div className="absolute -right-4 top-8 px-4 py-2 bg-white rounded-lg border border-gray-200 shadow-lg">
                                     <span className="text-2xl">⚛️</span>
-                                    <span className="ml-2 text-sm text-white font-medium">React</span>
+                                    <span className="ml-2 text-sm text-gray-900 font-medium">React</span>
                                 </div>
 
-                                <div className="absolute -left-4 bottom-8 px-4 py-2 bg-slate-800/90 backdrop-blur-sm rounded-lg border border-cyan-500/30 shadow-lg animate-bounce delay-500">
+                                <div className="absolute -left-4 bottom-8 px-4 py-2 bg-white rounded-lg border border-gray-200 shadow-lg">
                                     <span className="text-2xl">💻</span>
-                                    <span className="ml-2 text-sm text-white font-medium">Frontend</span>
+                                    <span className="ml-2 text-sm text-gray-900 font-medium">Frontend</span>
                                 </div>
                             </div>
                         </div>
@@ -187,8 +161,8 @@ const Hero = () => {
                 {/* Scroll Indicator */}
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
                     <span className="text-gray-500 text-sm">Scroll Down</span>
-                    <div className="w-6 h-10 rounded-full border-2 border-gray-600 flex justify-center pt-2">
-                        <div className="w-1 h-2 bg-gradient-to-b from-purple-500 to-cyan-500 rounded-full animate-pulse"></div>
+                    <div className="w-6 h-10 rounded-full border-2 border-gray-400 flex justify-center pt-2">
+                        <div className="w-1 h-2 bg-blue-600 rounded-full animate-pulse"></div>
                     </div>
                 </div>
             </div>

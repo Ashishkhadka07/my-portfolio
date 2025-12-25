@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="bg-slate-900 min-h-screen">
+    <div className="bg-gray-50 min-h-screen">
       <Navbar />
 
       <Routes>
