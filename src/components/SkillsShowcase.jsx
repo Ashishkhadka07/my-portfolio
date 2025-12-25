@@ -23,12 +23,12 @@ const SkillsShowcase = () => {
         {
             title: "Frontend Development",
             icon: "🎨",
-            skills: ["HTML", "CSS", "JavaScript", "React.js", "Next.js"]
+            skills: ["HTML", "CSS", "JavaScript", "React.js",]
         },
         {
             title: "Frameworks & Libraries",
             icon: "⚡",
-            skills: ["TailwindCSS", "Redux", "React Router"]
+            skills: ["TailwindCSS", "React Router"]
         },
         {
             title: "Tools & Technologies",
