@@ -3,40 +3,44 @@ import { Link } from "react-router-dom";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { HiArrowRight, HiCollection, HiStar } from "react-icons/hi";
 
+import maximsImg from "../assets/projects/maxims.jpg";
+import danalacImg from "../assets/projects/danalac.jpg";
+import nationalHerbsImg from "../assets/projects/national-herbs.png";
+
 const ProjectsPreview = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "Maxims Banquets & Events",
       description:
-        "A full-featured online shopping platform with cart, checkout, and payment integration.",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
+        "A premium full-stack event management and venue booking platform for one of Nepal's leading banquet chains.",
+      tags: ["React", "Hospitality", "Node.js"],
+      image: maximsImg, // Using imported local asset
       github: "#",
-      live: "#",
+      live: "https://maxims.com",
       featured: true,
+      category: "fullstack",
     },
     {
-      title: "Task Management App",
+      title: "Danalac Nepal",
       description:
-        "A productivity app for organizing tasks with drag-and-drop functionality.",
-      tags: ["React", "Redux", "TailwindCSS"],
-      image:
-        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&q=80",
+        "Official digital presence for Danalac infant formula in Nepal, focusing on product showcase and nutrition info.",
+      tags: ["React", "Healthcare", "UX/UI"],
+      image: danalacImg,
       github: "#",
-      live: "#",
-      featured: false,
+      live: "https://danalacnepal.com",
+      featured: true,
+      category: "frontend",
     },
     {
-      title: "Weather Dashboard",
+      title: "National Herbs",
       description:
-        "Real-time weather application with beautiful visualizations and forecasts.",
-      tags: ["JavaScript", "API", "CSS3"],
-      image:
-        "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&q=80",
+        "Full-stack e-commerce platform for organic and herbal products, featuring clean design and product filtering.",
+      tags: ["React", "E-Commerce", "Express"],
+      image: nationalHerbsImg,
       github: "#",
-      live: "#",
-      featured: false,
+      live: "https://nationalherbo.com",
+      featured: true,
+      category: "fullstack",
     },
   ];
 
@@ -52,7 +56,7 @@ const ProjectsPreview = () => {
             </h2>
           </div>
           <p className="text-gray-500 dark:text-gray-400">
-            Some of my recent work
+            Showcasing my best work in Full Stack & Frontend development
           </p>
         </div>
 
@@ -73,12 +77,25 @@ const ProjectsPreview = () => {
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                {/* Featured Badge */}
-                {project.featured && (
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold flex items-center gap-1">
-                    <HiStar /> Featured
+                {/* Featured & Category Badges */}
+                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                  {project.featured && (
+                    <div className="px-3 py-1 rounded-full bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 shadow-lg">
+                      <HiStar /> Featured
+                    </div>
+                  )}
+                  <div
+                    className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-lg ${
+                      project.category === "fullstack"
+                        ? "bg-purple-600 text-white"
+                        : "bg-emerald-600 text-white"
+                    }`}
+                  >
+                    {project.category === "fullstack"
+                      ? "Full Stack"
+                      : "Frontend"}
                   </div>
-                )}
+                </div>
 
                 {/* Action Links */}
                 <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -111,7 +128,7 @@ const ProjectsPreview = () => {
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 pt-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -132,7 +149,7 @@ const ProjectsPreview = () => {
             to="/projects"
             className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 font-semibold border-2 border-gray-300 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-lg transition-all duration-300"
           >
-            <span>View All Projects</span>
+            <span>Explore All Projects</span>
             <HiArrowRight className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

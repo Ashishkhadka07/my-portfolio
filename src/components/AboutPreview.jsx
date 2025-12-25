@@ -14,17 +14,17 @@ const AboutPreview = () => {
   const stats = [
     {
       icon: HiCode,
-      value: "20+",
+      value: "5+",
       label: "Projects Completed",
     },
     {
       icon: HiLightningBolt,
-      value: "2+",
-      label: "Years Experience",
+      value: "1+",
+      label: "Year Experience",
     },
     {
       icon: HiUserGroup,
-      value: "10+",
+      value: "7+",
       label: "Happy Clients",
     },
   ];

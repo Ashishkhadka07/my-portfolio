@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { HiMail, HiArrowRight, HiSparkles } from "react-icons/hi";
+import { HiMail, HiArrowRight, HiSparkles, HiPhone } from "react-icons/hi";
 
 const CTASection = () => {
   return (
@@ -41,10 +41,17 @@ const CTASection = () => {
               </Link>
 
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:aasheeshkhadka@gmail.com"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 font-semibold border-2 border-gray-300 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-lg transition-all duration-300"
               >
-                <span>your.email@example.com</span>
+                <span>aasheeshkhadka@gmail.com</span>
+              </a>
+              <a
+                href="tel:+9779861898097"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 font-semibold border-2 border-gray-300 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-lg transition-all duration-300"
+              >
+                <HiPhone className="text-xl" />
+                <span>+977 9861898097</span>
               </a>
             </div>
 
