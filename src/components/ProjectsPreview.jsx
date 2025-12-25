@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { HiArrowRight } from "react-icons/hi";
+import { HiArrowRight, HiCollection, HiStar } from "react-icons/hi";
 
 const ProjectsPreview = () => {
     const projects = [
@@ -38,14 +38,17 @@ const ProjectsPreview = () => {
     ];
 
     return (
-        <section className="relative py-24 bg-white">
+        <section className="relative py-24 bg-white dark:bg-gray-800 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="mb-16">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">
-                        Featured Projects
-                    </h2>
-                    <p className="text-gray-500">Some of my recent work</p>
+                    <div className="flex items-center gap-3 mb-2">
+                        <HiCollection className="text-3xl text-blue-600 dark:text-blue-400" />
+                        <h2 className="text-3xl sm:text-4xl font-bold text-blue-600 dark:text-blue-400">
+                            Featured Projects
+                        </h2>
+                    </div>
+                    <p className="text-gray-500 dark:text-gray-400">Some of my recent work</p>
                 </div>
 
                 {/* Projects Grid */}
@@ -53,7 +56,7 @@ const ProjectsPreview = () => {
                     {projects.map((project) => (
                         <div
                             key={project.title}
-                            className="group bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+                            className="group bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                         >
                             {/* Project Image */}
                             <div className="relative h-48 overflow-hidden">
@@ -67,8 +70,8 @@ const ProjectsPreview = () => {
 
                                 {/* Featured Badge */}
                                 {project.featured && (
-                                    <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold">
-                                        ⭐ Featured
+                                    <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold flex items-center gap-1">
+                                        <HiStar /> Featured
                                     </div>
                                 )}
 
@@ -78,7 +81,7 @@ const ProjectsPreview = () => {
                                         href={project.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="p-2 rounded-lg bg-white/90 text-gray-700 hover:text-gray-900 transition-colors duration-300"
+                                        className="p-2 rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:shadow-md transition-all duration-300"
                                     >
                                         <FaGithub size={18} />
                                     </a>
@@ -86,7 +89,7 @@ const ProjectsPreview = () => {
                                         href={project.live}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="p-2 rounded-lg bg-white/90 text-gray-700 hover:text-blue-600 transition-colors duration-300"
+                                        className="p-2 rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:text-blue-600 hover:shadow-md transition-all duration-300"
                                     >
                                         <FaExternalLinkAlt size={16} />
                                     </a>
@@ -95,10 +98,10 @@ const ProjectsPreview = () => {
 
                             {/* Project Content */}
                             <div className="p-6 space-y-4">
-                                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                                <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                                     {project.title}
                                 </h3>
-                                <p className="text-gray-600 text-sm leading-relaxed">
+                                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                                     {project.description}
                                 </p>
 
@@ -107,7 +110,7 @@ const ProjectsPreview = () => {
                                     {project.tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="px-3 py-1 text-xs font-medium rounded-full bg-blue-50 text-blue-600 border border-blue-100"
+                                            className="px-3 py-1 text-xs font-medium rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-800"
                                         >
                                             {tag}
                                         </span>
@@ -122,10 +125,10 @@ const ProjectsPreview = () => {
                 <div className="text-center mt-12">
                     <Link
                         to="/projects"
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-blue-600 text-blue-600 font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300"
+                        className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 font-semibold border-2 border-gray-300 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-lg transition-all duration-300"
                     >
                         <span>View All Projects</span>
-                        <HiArrowRight />
+                        <HiArrowRight className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </div>
             </div>

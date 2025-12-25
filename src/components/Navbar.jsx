@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { HiMenuAlt3, HiX, HiSun, HiMoon, HiHome, HiUser, HiCode, HiCollection, HiMail } from "react-icons/hi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { isDark, toggleTheme } = useTheme();
 
-  // Navigation links
+  // Navigation links with icons
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Projects", path: "/projects" },
-    { name: "Skills", path: "/skills" },
-    { name: "Contact", path: "/contact" },
+    { name: "Home", path: "/", icon: HiHome },
+    { name: "About", path: "/about", icon: HiUser },
+    { name: "Projects", path: "/projects", icon: HiCollection },
+    { name: "Skills", path: "/skills", icon: HiCode },
+    { name: "Contact", path: "/contact", icon: HiMail },
   ];
 
   // Handle scroll effect
@@ -34,7 +36,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-          ? "bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-200"
+          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-lg border-b border-gray-200 dark:border-gray-800"
           : "bg-transparent"
         }`}
     >
@@ -47,7 +49,7 @@ const Navbar = () => {
                 AK
               </span>
             </div>
-            <span className="hidden sm:block text-gray-900 font-semibold text-lg tracking-wide">
+            <span className="hidden sm:block text-gray-900 dark:text-white font-semibold text-lg tracking-wide">
               <span className="text-blue-600">&lt;</span>
               Developer
               <span className="text-blue-600">/&gt;</span>
@@ -60,30 +62,39 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${location.pathname === link.path
+                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg flex items-center gap-2 ${location.pathname === link.path
                     ? "text-blue-600"
-                    : "text-gray-600 hover:text-gray-900"
+                    : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                   }`}
               >
+                <link.icon className="text-lg" />
+                <span className="relative">{link.name}</span>
                 {/* Active indicator */}
                 {location.pathname === link.path && (
                   <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-blue-600 rounded-full"></span>
                 )}
-
-                <span className="relative">{link.name}</span>
               </Link>
             ))}
           </div>
 
-          {/* Social Links & CTA */}
+          {/* Right side: Theme toggle, Social Links & CTA */}
           <div className="hidden md:flex items-center gap-4">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-blue-600 transition-all duration-300"
+              aria-label="Toggle theme"
+            >
+              {isDark ? <HiSun size={20} /> : <HiMoon size={20} />}
+            </button>
+
             {/* Social Icons */}
             <div className="flex items-center gap-3">
               <a
                 href="https://github.com/yourusername"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-gray-900 transition-colors duration-300"
+                className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
               >
                 <FaGithub size={20} />
               </a>
@@ -91,44 +102,53 @@ const Navbar = () => {
                 href="https://linkedin.com/in/yourusername"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-blue-600 transition-colors duration-300"
+                className="text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300"
               >
                 <FaLinkedin size={20} />
               </a>
             </div>
 
             {/* Divider */}
-            <div className="w-px h-6 bg-gray-300"></div>
+            <div className="w-px h-6 bg-gray-300 dark:bg-gray-700"></div>
 
             {/* CTA Button */}
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white font-semibold text-sm rounded-full hover:bg-blue-700 transition-colors duration-300"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white font-semibold text-sm rounded-full hover:bg-white hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white border-2 border-blue-600 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300"
             >
+              <HiMail />
               <span>Let's Talk</span>
-              <span>→</span>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden relative p-2 text-gray-600 hover:text-gray-900 transition-colors duration-300"
-            aria-label="Toggle menu"
-          >
-            <div className="relative w-6 h-6">
-              <HiMenuAlt3
-                size={24}
-                className={`absolute transition-all duration-300 ${isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
-                  }`}
-              />
-              <HiX
-                size={24}
-                className={`absolute transition-all duration-300 ${isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
-                  }`}
-              />
-            </div>
-          </button>
+          {/* Mobile: Theme Toggle & Menu Button */}
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+              aria-label="Toggle theme"
+            >
+              {isDark ? <HiSun size={20} /> : <HiMoon size={20} />}
+            </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="relative p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
+              aria-label="Toggle menu"
+            >
+              <div className="relative w-6 h-6">
+                <HiMenuAlt3
+                  size={24}
+                  className={`absolute transition-all duration-300 ${isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
+                    }`}
+                />
+                <HiX
+                  size={24}
+                  className={`absolute transition-all duration-300 ${isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
+                    }`}
+                />
+              </div>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -139,32 +159,33 @@ const Navbar = () => {
             : "opacity-0 -translate-y-4 pointer-events-none"
           }`}
       >
-        <div className="bg-white border-t border-gray-200 shadow-xl">
+        <div className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 shadow-xl">
           <div className="max-w-7xl mx-auto px-4 py-6 space-y-2">
             {navLinks.map((link, index) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className={`block px-4 py-3 rounded-xl transition-all duration-300 ${location.pathname === link.path
-                    ? "bg-blue-50 text-blue-600 border-l-2 border-blue-600"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${location.pathname === link.path
+                    ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 border-l-2 border-blue-600"
+                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
                   }`}
                 style={{
                   transitionDelay: isOpen ? `${index * 50}ms` : "0ms",
                 }}
               >
+                <link.icon className="text-xl" />
                 <span className="font-medium">{link.name}</span>
               </Link>
             ))}
 
             {/* Mobile Social Links */}
-            <div className="pt-4 mt-4 border-t border-gray-200">
+            <div className="pt-4 mt-4 border-t border-gray-200 dark:border-gray-800">
               <div className="flex items-center justify-center gap-6">
                 <a
                   href="https://github.com/yourusername"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-gray-900 transition-colors duration-300 p-2"
+                  className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 p-2"
                 >
                   <FaGithub size={24} />
                 </a>
@@ -172,7 +193,7 @@ const Navbar = () => {
                   href="https://linkedin.com/in/yourusername"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-blue-600 transition-colors duration-300 p-2"
+                  className="text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 p-2"
                 >
                   <FaLinkedin size={24} />
                 </a>
@@ -181,9 +202,10 @@ const Navbar = () => {
               {/* Mobile CTA */}
               <Link
                 to="/contact"
-                className="mt-4 block text-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300"
+                className="mt-4 flex items-center justify-center gap-2 text-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300"
               >
-                Let's Talk →
+                <HiMail />
+                <span>Let's Talk</span>
               </Link>
             </div>
           </div>

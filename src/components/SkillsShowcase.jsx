@@ -16,24 +16,28 @@ import {
     SiNextdotjs,
     SiVite,
 } from "react-icons/si";
-import { HiArrowRight } from "react-icons/hi";
+import { HiArrowRight, HiCode } from "react-icons/hi";
 
 const SkillsShowcase = () => {
     const skillCategories = [
         {
             title: "Frontend Development",
+            icon: "🎨",
             skills: ["HTML", "CSS", "JavaScript", "React.js", "Next.js"]
         },
         {
             title: "Frameworks & Libraries",
+            icon: "⚡",
             skills: ["TailwindCSS", "Redux", "React Router"]
         },
         {
             title: "Tools & Technologies",
+            icon: "🛠️",
             skills: ["Git", "GitHub", "VS Code", "Figma", "npm"]
         },
         {
             title: "Soft Skills",
+            icon: "🤝",
             skills: ["Problem Solving", "Team Collaboration", "Communication"]
         }
     ];
@@ -54,14 +58,17 @@ const SkillsShowcase = () => {
     ];
 
     return (
-        <section className="relative py-24 bg-gray-50">
+        <section className="relative py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="mb-16">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-blue-600 mb-2">
-                        Skills & Expertise
-                    </h2>
-                    <p className="text-gray-500">Technologies and tools I work with</p>
+                    <div className="flex items-center gap-3 mb-2">
+                        <HiCode className="text-3xl text-blue-600 dark:text-blue-400" />
+                        <h2 className="text-3xl sm:text-4xl font-bold text-blue-600 dark:text-blue-400">
+                            Skills & Expertise
+                        </h2>
+                    </div>
+                    <p className="text-gray-500 dark:text-gray-400">Technologies and tools I work with</p>
                 </div>
 
                 {/* Skills Categories Grid */}
@@ -69,18 +76,18 @@ const SkillsShowcase = () => {
                     {skillCategories.map((category) => (
                         <div
                             key={category.title}
-                            className="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                            className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                         >
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
-                                    <div className="w-3 h-3 rounded-full bg-blue-600"></div>
+                                <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-xl">
+                                    {category.icon}
                                 </div>
-                                <h3 className="font-semibold text-gray-900">{category.title}</h3>
+                                <h3 className="font-semibold text-gray-900 dark:text-white">{category.title}</h3>
                             </div>
                             <ul className="space-y-2">
                                 {category.skills.map((skill) => (
-                                    <li key={skill} className="text-gray-600 text-sm flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                    <li key={skill} className="text-gray-600 dark:text-gray-400 text-sm flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400"></span>
                                         {skill}
                                     </li>
                                 ))}
@@ -90,16 +97,16 @@ const SkillsShowcase = () => {
                 </div>
 
                 {/* Tech Stack Icons */}
-                <div className="bg-white rounded-2xl p-8 border border-gray-100">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-6">Tech Stack</h3>
+                <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Tech Stack</h3>
                     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-4">
                         {technologies.map((tech) => (
                             <div
                                 key={tech.name}
-                                className="group flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-blue-50 transition-colors duration-300"
+                                className="group flex flex-col items-center gap-2 p-3 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
                             >
-                                <tech.icon className="text-2xl text-gray-600 group-hover:text-blue-600 transition-colors duration-300" />
-                                <span className="text-xs text-gray-500 group-hover:text-blue-600 transition-colors duration-300">{tech.name}</span>
+                                <tech.icon className="text-2xl text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300" />
+                                <span className="text-xs text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{tech.name}</span>
                             </div>
                         ))}
                     </div>
@@ -109,10 +116,10 @@ const SkillsShowcase = () => {
                 <div className="text-center mt-12">
                     <Link
                         to="/skills"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-gray-200 text-gray-700 hover:text-blue-600 hover:border-blue-300 transition-all duration-300"
+                        className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-lg transition-all duration-300"
                     >
                         <span>View All Skills</span>
-                        <HiArrowRight />
+                        <HiArrowRight className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                 </div>
             </div>

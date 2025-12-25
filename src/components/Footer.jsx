@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
-import { HiMail, HiHeart } from "react-icons/hi";
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaHeart } from "react-icons/fa";
+import { HiMail, HiHome, HiUser, HiCode, HiCollection, HiArrowUp } from "react-icons/hi";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const quickLinks = [
-        { name: "Home", path: "/" },
-        { name: "About", path: "/about" },
-        { name: "Projects", path: "/projects" },
-        { name: "Skills", path: "/skills" },
-        { name: "Contact", path: "/contact" },
+        { name: "Home", path: "/", icon: HiHome },
+        { name: "About", path: "/about", icon: HiUser },
+        { name: "Projects", path: "/projects", icon: HiCollection },
+        { name: "Skills", path: "/skills", icon: HiCode },
+        { name: "Contact", path: "/contact", icon: HiMail },
     ];
 
     const socialLinks = [
@@ -22,7 +22,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="relative bg-gray-900">
+        <footer className="relative bg-gray-900 dark:bg-black transition-colors duration-300">
             {/* Top Border */}
             <div className="h-1 bg-blue-600"></div>
 
@@ -68,7 +68,7 @@ const Footer = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label={social.label}
-                                    className="p-3 rounded-xl bg-gray-800 border border-gray-700 text-gray-400 hover:text-white hover:border-blue-600 hover:-translate-y-1 transition-all duration-300"
+                                    className="p-3 rounded-xl bg-gray-800 dark:bg-gray-900 border border-gray-700 text-gray-400 hover:text-white hover:border-blue-600 hover:-translate-y-1 transition-all duration-300"
                                 >
                                     <social.icon size={20} />
                                 </a>
@@ -87,8 +87,9 @@ const Footer = () => {
                                 <li key={link.name}>
                                     <Link
                                         to={link.path}
-                                        className="text-gray-400 hover:text-white transition-colors duration-300"
+                                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors duration-300"
                                     >
+                                        <link.icon className="text-blue-400" />
                                         {link.name}
                                     </Link>
                                 </li>
@@ -107,10 +108,10 @@ const Footer = () => {
                         </p>
                         <Link
                             to="/contact"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold text-sm rounded-full hover:bg-blue-700 transition-colors duration-300"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold text-sm rounded-full hover:bg-white hover:text-gray-900 border-2 border-blue-600 hover:border-white transition-all duration-300"
                         >
+                            <HiMail />
                             <span>Get In Touch</span>
-                            <span>→</span>
                         </Link>
                     </div>
                 </div>
@@ -121,7 +122,7 @@ const Footer = () => {
                         {/* Copyright */}
                         <p className="text-gray-500 text-sm flex items-center gap-1 flex-wrap justify-center">
                             © {currentYear} Made with
-                            <HiHeart className="text-red-500" size={16} />
+                            <FaHeart className="text-red-500" size={14} />
                             by
                             <span className="text-blue-400 font-medium">
                                 Ashish Khadka
@@ -135,7 +136,7 @@ const Footer = () => {
                         >
                             <span className="text-sm">Back to top</span>
                             <span className="w-8 h-8 rounded-full border border-gray-700 flex items-center justify-center hover:border-blue-600 hover:-translate-y-1 transition-all duration-300">
-                                ↑
+                                <HiArrowUp />
                             </span>
                         </button>
                     </div>
