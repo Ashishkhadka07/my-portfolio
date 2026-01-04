@@ -7,14 +7,14 @@ const ContactInfo = () => {
         {
             icon: HiMail,
             title: "Email",
-            value: "your.email@example.com",
-            link: "mailto:your.email@example.com",
+            value: "aasheeshkhadka@gmail.com",
+            link: "mailto:aasheeshkhadka@gmail.com",
         },
         {
             icon: HiPhone,
             title: "Phone",
-            value: "+977 98XXXXXXXX",
-            link: "tel:+97798XXXXXXXX",
+            value: "+977 9861898097",
+            link: "tel:+9779861898097",
         },
         {
             icon: HiLocationMarker,
