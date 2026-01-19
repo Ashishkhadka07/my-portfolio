@@ -48,7 +48,7 @@ export const projectsData = [
         title: "NabaLuxe",
         description:
             "Full-stack luxury beauty marketplace with integrated cart and user accounts.",
-        tags: ["React", "Redux", "Laravel", "MySQL"],
+        tags: ["E-commerce", "Cosmetics" ,"React", "Redux", "Laravel", "MySQL"],
         github: "#",
         live: "https://nabaluxe.com",
         category: "fullstack",
