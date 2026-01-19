@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { HiMenuAlt3, HiX, HiSun, HiMoon, HiHome, HiUser, HiCode, HiCollection, HiMail } from "react-icons/hi";
+import {
+  HiMenuAlt3,
+  HiX,
+  HiSun,
+  HiMoon,
+  HiHome,
+  HiUser,
+  HiCode,
+  HiCollection,
+  HiMail,
+} from "react-icons/hi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 
@@ -35,23 +45,24 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
           ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-lg border-b border-gray-200 dark:border-gray-800"
           : "bg-transparent"
-        }`}
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="group relative flex items-center gap-2">
-            <div className="relative bg-blue-600 px-3 py-2 rounded-lg">
+            {/* <div className="relative bg-blue-600 px-3 py-2 rounded-lg">
               <span className="text-2xl font-bold text-white">
                 AK
               </span>
-            </div>
+            </div> */}
             <span className="hidden sm:block text-gray-900 dark:text-white font-semibold text-lg tracking-wide">
               <span className="text-blue-600">&lt;</span>
-              Developer
+              Ashish
               <span className="text-blue-600">/&gt;</span>
             </span>
           </Link>
@@ -62,10 +73,11 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg flex items-center gap-2 ${location.pathname === link.path
+                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg flex items-center gap-2 ${
+                  location.pathname === link.path
                     ? "text-blue-600"
                     : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-                  }`}
+                }`}
               >
                 <link.icon className="text-lg" />
                 <span className="relative">{link.name}</span>
@@ -91,7 +103,7 @@ const Navbar = () => {
             {/* Social Icons */}
             <div className="flex items-center gap-3">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/Ashishkhadka07"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
@@ -99,7 +111,7 @@ const Navbar = () => {
                 <FaGithub size={20} />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/ashish-khadka-b31625212/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300"
@@ -138,13 +150,15 @@ const Navbar = () => {
               <div className="relative w-6 h-6">
                 <HiMenuAlt3
                   size={24}
-                  className={`absolute transition-all duration-300 ${isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
-                    }`}
+                  className={`absolute transition-all duration-300 ${
+                    isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
+                  }`}
                 />
                 <HiX
                   size={24}
-                  className={`absolute transition-all duration-300 ${isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
-                    }`}
+                  className={`absolute transition-all duration-300 ${
+                    isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
+                  }`}
                 />
               </div>
             </button>
@@ -154,10 +168,11 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 transition-all duration-500 ease-in-out ${isOpen
+        className={`md:hidden absolute top-full left-0 right-0 transition-all duration-500 ease-in-out ${
+          isOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-4 pointer-events-none"
-          }`}
+        }`}
       >
         <div className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 shadow-xl">
           <div className="max-w-7xl mx-auto px-4 py-6 space-y-2">
@@ -165,10 +180,11 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${location.pathname === link.path
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
+                  location.pathname === link.path
                     ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 border-l-2 border-blue-600"
                     : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
-                  }`}
+                }`}
                 style={{
                   transitionDelay: isOpen ? `${index * 50}ms` : "0ms",
                 }}
@@ -182,7 +198,7 @@ const Navbar = () => {
             <div className="pt-4 mt-4 border-t border-gray-200 dark:border-gray-800">
               <div className="flex items-center justify-center gap-6">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/Ashishkhadka07"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 p-2"
@@ -190,7 +206,7 @@ const Navbar = () => {
                   <FaGithub size={24} />
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/ashish-khadka-b31625212/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors duration-300 p-2"
