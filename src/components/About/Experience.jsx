@@ -4,25 +4,24 @@ import { HiBriefcase } from "react-icons/hi";
 const Experience = () => {
     const experience = [
         {
-            title: "Software Engineer",
-            company: "Tech Company",
-            period: "2023 - Present",
-            description: "Building scalable web applications using React, Node.js, and cloud technologies. Leading frontend development initiatives.",
-            skills: ["React", "Node.js", "AWS", "TypeScript"],
+            title: "FrontEnd Web Developer / React developer",
+            company: "VS Nepal Pvt. Ltd.",
+            period: "July 2025 - Present",
+            description: "Building scalable web applications using React and Wordpress. Leading frontend development initiatives.",
+            skills: ["React", "JavaScript", "TailwindCSS", "Figma", "Wordpress", "TypeScript"],
+        },{
+            title: "AWS Cloud Intern",
+            company: "G-TEC",
+            period: "January 2025-April 2025",
+            description: "Started my journey in cloud computing, learning best practices and contributing to AWS Services",
+            skills: ["AWS", "AWS Services", "Cloud Technology"],
         },
         {
-            title: "Frontend Developer",
-            company: "Digital Agency",
-            period: "2022 - 2023",
-            description: "Developed responsive web applications and improved user experience across multiple client projects.",
-            skills: ["React", "JavaScript", "TailwindCSS", "Figma"],
-        },
-        {
-            title: "Junior Developer",
-            company: "Startup Inc",
+            title: "FrontEnd Developer Intern",
+            company: "New Summit College",
             period: "2021 - 2022",
             description: "Started my journey in web development, learning best practices and contributing to team projects.",
-            skills: ["HTML", "CSS", "JavaScript", "Git"],
+            skills: ["HTML", "CSS", "JavaScript", "Git", "React"],
         },
     ];
 
