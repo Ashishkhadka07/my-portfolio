@@ -9,7 +9,7 @@ const Hero = () => {
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const roles = ["Frontend Developer", "React Enthusiast"];
+  const roles = ["Frontend Developer", "React Enthusiast", "Web Developer"];
 
   // Typing animation effect
   useEffect(() => {

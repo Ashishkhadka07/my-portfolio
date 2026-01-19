@@ -56,7 +56,7 @@ const AboutPreview = () => {
               <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
                 I'm a passionate{" "}
                 <span className="text-blue-600 dark:text-blue-400 font-semibold">
-                  Frontend Developer
+                  Frontend Web Developer
                 </span>{" "}
                 based in Nepal, with a strong focus on creating beautiful,
                 functional, and user-centered digital experiences.

@@ -16,7 +16,7 @@ const ProjectsPreview = () => {
       tags: ["React", "Hospitality", "Node.js"],
       image: maximsImg, // Using imported local asset
       github: "#",
-      live: "https://maxims.com",
+      live: "https://maximsbanquet.com",
       featured: true,
       category: "fullstack",
     },
