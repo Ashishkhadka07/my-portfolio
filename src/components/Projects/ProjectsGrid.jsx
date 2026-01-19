@@ -1,127 +1,16 @@
 import React, { useState } from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { HiCollection, HiFilter, HiStar, HiClock } from "react-icons/hi";
-
-import nationalHerbsImg from "../../assets/projects/national-herbs.png";
-import colonyImg from "../../assets/projects/colony.png";
-import maximsImg from "../../assets/projects/maxims.jpg";
-import danalacImg from "../../assets/projects/danalac.jpg";
-import nabaLuxeImg from "../../assets/projects/nabaluxe.jpg";
-import vsNepalImg from "../../assets/projects/vsnepal.jpg";
-import kurintarImg from "../../assets/projects/kurintar.jpg";
-import eliteImg from "../../assets/projects/elite.png";
+import {
+  HiCollection,
+  HiFilter,
+  HiStar,
+  HiClock,
+  HiTerminal,
+} from "react-icons/hi";
+import { projectsData } from "../../data/projects"; 
 
 const ProjectsGrid = () => {
   const [filter, setFilter] = useState("all");
-
-  const projects = [
-    {
-      title: "National Herbs",
-      description:
-        "A full-stack e-commerce storefront for organic and herbal products in Nepal.",
-      tags: ["React", "Node.js", "TailwindCSS"],
-      image: nationalHerbsImg,
-      github: "#",
-      live: "https://nationalherbo.com",
-      category: "fullstack",
-      featured: false,
-      isOngoing: false,
-    },
-    {
-      title: "Colony Production",
-      description:
-        "Supply and distribution platform for hospitality goods and equipment.",
-      tags: ["React", "Logistics", "UI/UX"],
-      image: colonyImg,
-      github: "#",
-      live: "https://colonysuppliers.com",
-      category: "frontend",
-      featured: false,
-      isOngoing: false,
-    },
-    {
-      title: "Maxims Banquets",
-      description:
-        "Full-stack event booking and management system for premium banquet halls.",
-      tags: ["React", "Laravel", "MySQL"],
-      image: maximsImg,
-      github: "#",
-      live: "https://maximsbanquet.com",
-      category: "fullstack",
-      featured: true,
-      isOngoing: false,
-    },
-    {
-      title: "Danalac Nepal",
-      description:
-        "Official frontend presence for an international infant formula brand.",
-      tags: ["React", "TailwindCSS", "Clean-UI"],
-      image: danalacImg,
-      github: "#",
-      live: "https://danalacnepal.com",
-      category: "frontend",
-      featured: false,
-      isOngoing: false,
-    },
-    {
-      title: "NabaLuxe",
-      description:
-        "Full-stack luxury beauty marketplace with integrated cart and user accounts.",
-      tags: ["React", "Redux","Laravel", "MySQL"],
-      image: nabaLuxeImg,
-      github: "#",
-      live: "https://nabaluxe.com",
-      category: "fullstack",
-      featured: true,
-      isOngoing: false,
-    },
-    {
-      title: "VS Nepal Pvt. Ltd.",
-      description:
-        "Enterprise solution for education and consulting (Under Development).",
-      tags: ["React", "Vite", "Dashboard", "PHP", "Laravel", "MySQL"],
-      image: vsNepalImg,
-      github: "#",
-      live: "https://vsnepal.com",
-      category: "fullstack",
-      featured: true,
-      isOngoing: false,
-    },
-    {
-      title: "Kurintar Retreat",
-      description:
-        "Full-stack luxury resort booking system with real-time availability.",
-      tags: ["React", "PHP", "Laravel", "Hospitality"],
-      image: kurintarImg,
-      github: "#",
-      live: "https://kurintarretreat.com",
-      category: "fullstack",
-      featured: false,
-      isOngoing: false,
-    },
-    {
-      title: "Elite Hospitality",
-      description: "Service management for premium hospitality assets.",
-      tags: ["React", "Fullstack", "Admin-Panel"],
-      image: eliteImg,
-      github: "#",
-      live: "#",
-      category: "fullstack",
-      featured: false,
-      isOngoing: true,
-    },
-    {
-      title: "Media for Culture",
-      description: "Media for Culture Production mediahub  which makes movies and the documentaries.",
-      tags: ["React", "Movie-based"],
-      image: eliteImg,
-      github: "#",
-      live: "#",
-      category: "frontend",
-      featured: false,
-      isOngoing: true,
-    },
-  ];
 
   const filters = [
     { id: "all", label: "All Projects", icon: HiCollection },
@@ -130,103 +19,98 @@ const ProjectsGrid = () => {
   ];
 
   const filteredProjects =
-    filter === "all" ? projects : projects.filter((p) => p.category === filter);
+    filter === "all"
+      ? projectsData
+      : projectsData.filter((p) => p.category === filter);
 
   return (
-    <section className="py-16">
+    <section className="py-16 bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Filter Buttons */}
+        {/* Filter Toolbar */}
         <div className="flex flex-wrap gap-3 mb-12">
           {filters.map((f) => (
             <button
               key={f.id}
               onClick={() => setFilter(f.id)}
-              className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+              className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl font-medium transition-all duration-300 ${
                 filter === f.id
                   ? "bg-blue-600 text-white shadow-lg"
-                  : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md"
+                  : "bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-blue-400"
               }`}
             >
-              <f.icon />
-              {f.label}
+              <f.icon /> {f.label}
             </button>
           ))}
         </div>
 
-        {/* Projects Grid */}
+        {/* The Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
             <div
               key={project.title}
-              className="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+              className="group relative bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 p-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between"
             >
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                {/* Status Badges */}
-                <div className="absolute top-4 left-4 flex flex-col gap-2">
-                  {project.featured && (
-                    <div className="px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-semibold flex items-center gap-1 shadow-lg">
-                      <HiStar /> Featured
-                    </div>
-                  )}
-                  {project.isOngoing && (
-                    <div className="px-3 py-1 rounded-full bg-amber-500 text-white text-xs font-semibold flex items-center gap-1 shadow-lg">
-                      <HiClock /> In Progress
-                    </div>
-                  )}
+              <div>
+                <div className="flex justify-between items-start mb-4">
+                  <div className="p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400">
+                    <HiTerminal className="text-2xl" />
+                  </div>
+                  <div className="flex flex-col items-end gap-2">
+                    {project.featured && (
+                      <span className="flex items-center gap-1 text-amber-500 bg-amber-50 dark:bg-amber-900/20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border border-amber-100 dark:border-amber-900/50">
+                        <HiStar /> Featured
+                      </span>
+                    )}
+                    {project.isOngoing && (
+                      <span className="flex items-center gap-1 text-blue-500 bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border border-blue-100 dark:border-blue-900/50">
+                        <HiClock /> In Progress
+                      </span>
+                    )}
+                  </div>
                 </div>
 
-                {/* Action Links */}
-                <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-full font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                  >
-                    <FaGithub /> Code
-                  </a>
-                  {project.live !== "#" ? (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full font-medium text-sm hover:bg-blue-700 transition-colors"
-                    >
-                      <FaExternalLinkAlt /> Live Demo
-                    </a>
-                  ) : (
-                    <span className="px-4 py-2 bg-gray-500 text-white rounded-full font-medium text-sm cursor-not-allowed">
-                      Coming Soon
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              <div className="p-6 space-y-4">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-2">
+                <p className="text-gray-600 dark:text-gray-400 text-sm mt-3 leading-relaxed">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mt-4">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-800"
+                      className="px-2.5 py-0.5 text-[11px] font-semibold rounded-md bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase tracking-tight"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
+              </div>
+
+              <div className="mt-8 flex items-center gap-4">
+                {project.live !== "#" ? (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex justify-center items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-blue-700 transition-all"
+                  >
+                    <FaExternalLinkAlt size={12} /> Live Demo
+                  </a>
+                ) : (
+                  <button className="flex-1 px-4 py-2.5 bg-gray-100 dark:bg-gray-700 text-gray-400 rounded-xl font-bold text-sm cursor-not-allowed">
+                    Coming Soon
+                  </button>
+                )}
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
+                >
+                  <FaGithub size={20} />
+                </a>
               </div>
             </div>
           ))}
